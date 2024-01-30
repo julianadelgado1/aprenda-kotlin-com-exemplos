@@ -1,0 +1,30 @@
+/**
+ * Exemplo básico de uma [suspend] function com Coroutines.
+ * (https://kotlinlang.org/docs/exceptions.html#try-is-an-expression)
+ * 
+ */
+class IllegalVoterException(message: String) : Throwable(message)
+//criado propria excessao no illegal se precisar
+@Throws(IllegalArgumentException::class)
+fun vote(name: String, age: Int){
+    if (age < 16) {
+        throw IllegalVoterException("$name não pode votar")
+     
+    }
+    println ("Voto de $name ralizado com sucesso")
+}
+fun main(){
+
+    //vote("Rafael", 38)
+    // vote("Erico", 10)
+    //  vote("Juliana",40)
+    
+    // ou posso fazer da maneira abaixo trabalhandom try catch de como lidar com exessoes
+   
+var quantidadeVotos =0;
+    quantidadeVotos += try{ vote("Rafael", 38); 1; } catch (e:IllegalVoterException) {0}
+    quantidadeVotos += try{ vote("Erico", 10); 1; } catch (e:IllegalVoterException) {0}
+    quantidadeVotos += try{ vote("Juliana",40); 1; } catch (e:IllegalVoterException) {0}
+    println(quantidadeVotos)
+    
+}

@@ -1,0 +1,23 @@
+/**
+ * Exemplo básico de uma [suspend] function com Coroutines.
+ * (https://kotlinlang.org/docs/exceptions.html#try-is-an-expression)
+ * 
+ */
+
+
+fun main() {
+    val a = 10
+    val b = 0
+    // val divisao = try { a/b } catch (e: ArithmeticException) { null } // pode usar dessa maneira tb forçando um nulo ou zero
+    try{
+   		 val divisao = a/b
+        println (divisao)
+    }catch(e:ArithmeticException){
+        println("Ocorreu uma exeção artimética")
+        }catch(e: Throwable){
+        println(e.message)
+    } finally {
+        println("Finaly Executado")
+    }
+
+}

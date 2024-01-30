@@ -1,0 +1,16 @@
+/**
+ * Exemplo básico 
+ *
+ * (https://kotlinlang.org/docs/exceptions.html#the-nothing-type)
+ */
+
+data class Person(val name: String?)
+
+fun fail(message: String): Nothing {
+    throw IllegalArgumentException(message)
+}
+fun main(){
+    val person = Person(null)
+    val s = person.name ?: throw IllegalArgumentException("Name required")
+    println(s)
+}
